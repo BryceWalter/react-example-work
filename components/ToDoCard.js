@@ -4,31 +4,28 @@ import CardContent from '@material-ui/core/CardContent';
 
 import ToDoList from './ToDoList';
 import AddToDo from './AddToDo';
+import { CardHeader, Typography } from '@material-ui/core';
 
 class ToDoCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            newToDo: '',
             checked: [],
             toDoList: [
                 {
-                    id: 0,
                     text: 'Something to do!'
                 },
                 {
-                    id: 1,
                     text: 'Something else to do!'
                 },
                 {
-                    id: 2,
                     text: 'Another thing to do!'
                 },
                 {
-                    id: 3,
                     text: 'Woah a lot to do!'
                 },
                 {
-                    id: 4,
                     text: 'Crazy thing to do!'
                 },
             ]
@@ -44,20 +41,32 @@ class ToDoCard extends Component {
         }
     };
 
+    handleChange = (e) => {
+        const { name, type, value } = e.target;
+        const val = type === 'number' ? parseFloat(value) : value;
+        this.setState({ [name]: val })
+    };
+
     addToDo = value => () => {
         const array = [...this.state.toDoList];
-
-        array.push(value)
-        this.setState({toDoList: array})
+        const toDoObj = { text: value }
+        array.push(toDoObj);
+        this.setState({toDoList: array, newToDo: ''})
     }
 
     render() {
         return (
             <Card >
+                <CardHeader title={'Stuff You Gotta Do'}>
+                </CardHeader>
                 <CardContent>
                     <ToDoList handleToggle={this.handleToggle.bind(this)} toDoList={this.state.toDoList} checked={this.state.checked} />
                 </CardContent>
-                <AddToDo/>
+                <AddToDo 
+                    handleAddToDo={this.addToDo.bind(this)} 
+                    handleToDoChange={this.handleChange} 
+                    newToDo={this.state.newToDo} 
+                />
             </Card>
         );
     }

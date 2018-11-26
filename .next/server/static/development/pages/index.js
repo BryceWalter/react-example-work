@@ -161,23 +161,26 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 12
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_3___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 13
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_5___default.a, {
+        onChange: this.props.handleToDoChange,
+        value: this.props.newToDo,
+        name: "newToDo",
         fullWidth: true,
         multiline: true,
         rows: "4",
         label: "Todo",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 14
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardActions__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -186,15 +189,16 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 24
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        onClick: this.props.handleAddToDo(this.props.newToDo),
         size: "small",
         variant: "outlined",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 25
         },
         __self: this
       }, "Add")));
@@ -225,6 +229,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _ToDoList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ToDoList */ "./components/ToDoList.js");
 /* harmony import */ var _AddToDo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AddToDo */ "./components/AddToDo.js");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__);
 var _jsxFileName = "/Users/brycewalterparker/react-example/components/ToDoCard.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -261,6 +267,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var ToDoCard =
 /*#__PURE__*/
 function (_Component) {
@@ -288,34 +295,44 @@ function (_Component) {
       };
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleChange", function (e) {
+      var _e$target = e.target,
+          name = _e$target.name,
+          type = _e$target.type,
+          value = _e$target.value;
+      var val = type === 'number' ? parseFloat(value) : value;
+
+      _this.setState(_defineProperty({}, name, val));
+    });
+
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "addToDo", function (value) {
       return function () {
         var array = _toConsumableArray(_this.state.toDoList);
 
-        array.push(value);
+        var toDoObj = {
+          text: value
+        };
+        array.push(toDoObj);
 
         _this.setState({
-          toDoList: array
+          toDoList: array,
+          newToDo: ''
         });
       };
     });
 
     _this.state = {
+      newToDo: '',
       checked: [],
       toDoList: [{
-        id: 0,
         text: 'Something to do!'
       }, {
-        id: 1,
         text: 'Something else to do!'
       }, {
-        id: 2,
         text: 'Another thing to do!'
       }, {
-        id: 3,
         text: 'Woah a lot to do!'
       }, {
-        id: 4,
         text: 'Crazy thing to do!'
       }]
     };
@@ -328,13 +345,20 @@ function (_Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_1___default.a, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 59
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_5__["CardHeader"], {
+        title: 'Stuff You Gotta Do',
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57
+          lineNumber: 60
+        },
+        __self: this
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_CardContent__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 62
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ToDoList__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -343,13 +367,16 @@ function (_Component) {
         checked: this.state.checked,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 63
         },
         __self: this
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddToDo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        handleAddToDo: this.addToDo.bind(this),
+        handleToDoChange: this.handleChange,
+        newToDo: this.state.newToDo,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60
+          lineNumber: 65
         },
         __self: this
       }));
@@ -624,6 +651,17 @@ function (_Component) {
 
 module.exports = __webpack_require__(/*! ./pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "@material-ui/core":
+/*!************************************!*\
+  !*** external "@material-ui/core" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core");
 
 /***/ }),
 

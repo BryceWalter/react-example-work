@@ -6,11 +6,15 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 class AddToDo extends Component {
+
     render() {
         return (
             <Card style={{marginTop: '40px'}}>
             <CardContent>
                 <TextField 
+                    onChange={this.props.handleToDoChange}
+                    value={this.props.newToDo}
+                    name="newToDo"
                     fullWidth
                     multiline
                     rows="4"
@@ -18,7 +22,7 @@ class AddToDo extends Component {
                 />
             </CardContent>
             <CardActions style={{justifyContent: 'center'}}>
-                <Button size="small" variant="outlined">Add</Button>
+                <Button onClick={this.props.handleAddToDo(this.props.newToDo)} size="small" variant="outlined">Add</Button>
             </CardActions>
         </Card>
         );
