@@ -13,6 +13,7 @@ class AddToDo extends Component {
             <CardContent>
                 <TextField 
                     onChange={this.props.handleToDoChange}
+                    onKeyPress={this.props.handleAddToDo(this.props.newToDo)}
                     value={this.props.newToDo}
                     name="newToDo"
                     fullWidth
@@ -23,6 +24,7 @@ class AddToDo extends Component {
             </CardContent>
             <CardActions style={{justifyContent: 'center'}}>
                 <Button 
+                    name="newToDoButton"
                     onClick={this.props.handleAddToDo(this.props.newToDo)} 
                     size="small" 
                     variant="outlined"
