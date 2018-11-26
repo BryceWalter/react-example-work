@@ -17,7 +17,7 @@ class Index extends Component {
                     </Toolbar>
                 </AppBar>
                 <Grid 
-                    style={{marginTop: '7%'}}
+                    style={{marginTop: '70px'}}
                     container 
                     direction="row"
                     justify="center"

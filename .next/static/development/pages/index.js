@@ -46879,7 +46879,7 @@ function (_Component) {
         __self: this
       }, "Just a List"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_1___default.a, {
         style: {
-          marginTop: '7%'
+          marginTop: '70px'
         },
         container: true,
         direction: "row",
