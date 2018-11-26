@@ -22,7 +22,13 @@ class AddToDo extends Component {
                 />
             </CardContent>
             <CardActions style={{justifyContent: 'center'}}>
-                <Button onClick={this.props.handleAddToDo(this.props.newToDo)} size="small" variant="outlined">Add</Button>
+                <Button 
+                    onClick={this.props.handleAddToDo(this.props.newToDo)} 
+                    size="small" 
+                    variant="outlined"
+                >
+                    Add
+                </Button>
             </CardActions>
         </Card>
         );

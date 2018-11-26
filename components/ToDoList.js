@@ -10,13 +10,19 @@ class ToDoList extends React.Component {
         return (
             <List>
             {this.props.toDoList.map((toDo, index) => (
-                <ListItem key={index} role={undefined} dense button onClick={this.props.handleToggle(index)}>
-                <Checkbox
-                    checked={this.props.checked.indexOf(toDo.id) !== -1}
-                    tabIndex={-1}
-                    disableRipple
-                />
-                <ListItemText primary={toDo.text} />
+                <ListItem 
+                    key={index} 
+                    role={undefined} 
+                    dense 
+                    button 
+                    onClick={this.props.handleToggle(index)}
+                >
+                    <Checkbox
+                        checked={this.props.checked.indexOf(toDo.id) !== -1}
+                        tabIndex={-1}
+                        disableRipple
+                    />
+                    <ListItemText primary={toDo.text} />
                 </ListItem>
             ))}
             </List>

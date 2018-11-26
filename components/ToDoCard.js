@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import { CardHeader, Typography } from '@material-ui/core';
 
 import ToDoList from './ToDoList';
 import AddToDo from './AddToDo';
-import { CardHeader, Typography } from '@material-ui/core';
 
 class ToDoCard extends Component {
     constructor(props) {
@@ -60,7 +60,11 @@ class ToDoCard extends Component {
                 <CardHeader title={'Stuff You Gotta Do'}>
                 </CardHeader>
                 <CardContent>
-                    <ToDoList handleToggle={this.handleToggle.bind(this)} toDoList={this.state.toDoList} checked={this.state.checked} />
+                    <ToDoList 
+                        handleToggle={this.handleToggle.bind(this)} 
+                        toDoList={this.state.toDoList} 
+                        checked={this.state.checked} 
+                    />
                 </CardContent>
                 <AddToDo 
                     handleAddToDo={this.addToDo.bind(this)} 
