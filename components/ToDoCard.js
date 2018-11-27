@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { CardHeader } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import Search from '@material-ui/icons/Search';
 
 import ToDoList from './ToDoList';
 import AddToDo from './AddToDo';
@@ -12,44 +9,7 @@ import AddToDo from './AddToDo';
 class ToDoCard extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            newToDo: '',
-            checked: [],
-            initialToDoList: [
-                {
-                    text: 'Something to do!'
-                },
-                {
-                    text: 'Something else to do!'
-                },
-                {
-                    text: 'Another thing to do!'
-                },
-                {
-                    text: 'Woah a lot to do!'
-                },
-                {
-                    text: 'Crazy thing to do!'
-                },
-            ],
-            toDoList: [
-                {
-                    text: 'Something to do!'
-                },
-                {
-                    text: 'Something else to do!'
-                },
-                {
-                    text: 'Another thing to do!'
-                },
-                {
-                    text: 'Woah a lot to do!'
-                },
-                {
-                    text: 'Crazy thing to do!'
-                },
-            ],
-        };
+        this.state = this.props.appState
     }
 
     handleToggle = (value) => () => {
@@ -97,19 +57,6 @@ class ToDoCard extends Component {
                 <CardHeader title={'Stuff You Gotta Do'}>
                 </CardHeader>
                 <CardContent>
-                    <TextField
-                        onChange={this.handleSearch}
-                        placeholder="Have a look..."
-                        multiline
-                        label=""
-                        InputProps={{
-                            endAdornment: (
-                              <InputAdornment variant="filled" position="end">
-                                <Search/>
-                              </InputAdornment>
-                            ),
-                        }}
-                    />
                     <ToDoList 
                         
                         handleToggle={this.handleToggle.bind(this)} 
@@ -117,11 +64,6 @@ class ToDoCard extends Component {
                         checked={this.state.checked} 
                     />
                 </CardContent>
-                <AddToDo 
-                    handleAddToDo={this.addToDo.bind(this)} 
-                    handleToDoChange={this.handleChange} 
-                    newToDo={this.state.newToDo} 
-                />
             </Card>
         );
     }
