@@ -47,11 +47,49 @@ class Index extends Component {
         }
     }
 
+    handleSearch = (e) => {
+        console.log(e.target.value)
+        var updatedList = this.state.initialToDoList;
+        updatedList = updatedList.filter((toDo) => {
+          return toDo.text.toLowerCase().search(
+            e.target.value.toLowerCase()) !== -1;
+        });
+
+        this.setState({toDoList: updatedList});
+    }
+
+    handleChange = (e) => {
+        const { name, type, value } = e.target;
+        const val = type === 'number' ? parseFloat(value) : value;
+        this.setState({ [name]: val })
+    };
+
+    handleKeyPress = (event) => {
+        if (event.key == 'Enter') {
+          this.addToDo(event.value)
+        }
+    }
+
+    addToDo = (value) => (e) => {
+        if (e.key === 'Enter' || e.target.name === 'newToDoButton' || e.target.name === undefined) {
+            e.preventDefault();
+            const array = [...this.state.toDoList];
+            const toDoObj = { text: value }
+            array.push(toDoObj);
+            this.setState({initialToDoList: array, toDoList: array, newToDo: ''})
+        }
+    }
+
     render() {
         return (
             <React.Fragment>
                 <Head/>
-                <AppToolbar/>
+                <AppToolbar 
+                    newToDo={this.state.newToDo}
+                    handleSearch={this.handleSearch}
+                    handleToDoChange={this.handleChange}
+                    handleAddToDo={this.addToDo}
+                />
                 <Grid 
                     style={{marginTop: '70px'}}
                     container 
